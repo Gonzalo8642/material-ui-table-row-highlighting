@@ -1,0 +1,21 @@
+name: Test On PR
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: npm install and test
+      # runs a multi line script using "|"
+      run: |
+        npm install
+        npm test
+      env:
+        CI: true
